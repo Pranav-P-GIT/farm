@@ -1,0 +1,73 @@
+<html>
+{%  load static %}
+
+<head>
+    <title>
+        Register form
+    </title>
+</head>
+<style>
+    .div {
+        width: 700px;
+        height: 400px;
+        background-color: #ffffffb4;
+        margin-top: 50px;
+        padding-top: 50px;
+        border-radius: 10px;
+        margin-right: px
+    }
+
+    .input {
+        width: 280px;
+        border-radius: 2px;
+        height: 30px;
+        border: none;
+        border-bottom: 3px solid rgba(15, 1, 1, 0.781);
+        border-style: groove;
+        border-color: black;
+        padding-left: 20px;
+        margin-bottom: 20px;
+        font-size: 15px;
+        background-color: rgb(255, 255, 255);
+        outline: none
+    }
+
+    .label {
+        color: rgb(0, 0, 0);
+        font-weight: 800;
+        font-size: 20;
+        font-family: monospace;
+    }
+</style>
+
+<body background="{% static 'img/pexels-erik-mclean-6275398.jpg' %}">
+    <center>
+        <form action="{% url 'registerpage' %}" method="post" name=>
+            {% csrf_token %}
+        <div class="div">
+            <h3>Register form</h3>
+            <label class="label" for="name">Name:</label>
+            <input class="input" type="text" placeholder=" username" id="name" name="uname" required>
+            <input class="input" type="text" placeholder="First name" id="name" name="fname">
+            <input class="input" type="text" placeholder="Last name" id="name" name="sname"><br><br>
+            <label class="label" for="gmail">Gmail:</label>
+            <input class="input" type="text" placeholder="Type here.." id="gmail" name="email" required><br><br>
+            <label class="label" for="pword">Password:</label>
+            <input class="input" type="password" placeholder="Type here..." id="pword" name="pass" required><br><br>
+            <label class="label" for="pword">Repeat Password:</label>
+            <input class="input" type="password" placeholder="Type here.." id="pword" name="repass" required><br>
+
+            <input type="checkbox" id="t-and-c2" />
+            <label for="t-and-c2">I accept the terms and conditions.</label>
+            <span>Read <a href="https://link.com">terms and conditions</a></span><br><br>
+            <button style="width:280px;height:30px;background-color:#7AB730;border:none;font-size:15px;color:white;"
+                type="submit">Sigh up</button><br><br>
+                <font color="red">{{msg}}
+
+                </font>
+        </div>
+    </form>
+    </center>
+</body>
+
+</html>
