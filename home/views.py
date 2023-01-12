@@ -2,12 +2,20 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from django.contrib import auth
 from django.contrib.auth.models import User
+from .models import FarmProduct
 
 # Create your views here.
 
 
 def index(request):
-    return render(request, "index.html")
+    
+ 
+        data=FarmProduct.objects.all()
+
+  
+
+
+        return render(request,"index.html",{"pro":data})
 
 def login(request):
     if request.method=="POST":
@@ -53,3 +61,12 @@ def register(request):
 def logout(request):
     auth.logout(request)
     return redirect("/")
+    
+def test(request):
+    if request.method=="POST":
+        search=request.POST["msg"]
+        data=FarmProduct.objects.filter(name__istartswith=search)
+        return render(request,"results.html",{"pro":data})
+   
+
+
